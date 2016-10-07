@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>test</title>
+    <link rel="shortcut icon" href="favicon.ico" />
+    <link rel="stylesheet" href="src/css/common.css">
+    <script src="src/js/Browser.js" charset="utf-8"></script>
+    <script type="text/javascript">
+      var info   = new Browser(),
+          device = info.device;
+      console.log(device);
+      if (device == "PC") {
+        addCssByLink("src/css/pc.css");
+      }else if(device == "Mobile"){
+        addCssByLink("src/css/mobile.css");
+      }
+
+      function addCssByLink(url) {
+        var cssLink = document.createElement("link"),
+            head = document.getElementsByTagName("head")[0];
+        cssLink.setAttribute("rel", "stylesheet");
+        cssLink.setAttribute("href", url);
+        head.appendChild(cssLink);
+      }
+    </script>
+  </head>
+  <body>
+    <h1>根据设备，加载不同样式表</h1>
+    <h2 class="PC">这是PC</h2>
+    <h2 class="M">这是Mobile</h2>
+    <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.js"></script>
+    <script>
+      $(function () {
+        if ($('.PC').is(':visible')) {
+          console.log("PC is visible");
+        }
+      })
+    </script>
+  </body>
+</html>
